@@ -1,8 +1,8 @@
-# Run The Project
+## Run The Project
 
-* ng Serve
+* ng serve
 
-# Requirement
+## Requirement
 
 * CometChat Pro 3.0.0
 * Firebase
@@ -10,5 +10,4 @@
 * Angular-Material Icons
 * Angular-Youtube Player
 
-# mediaapp
-
+## media_app
