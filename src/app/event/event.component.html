@@ -1,0 +1,149 @@
+<app-header></app-header>
+<div class="app">
+  <app-sidebar class="sidebar"></app-sidebar>
+  <div class="event">
+    <div class="event__left">
+      <div class="event__player">
+        <youtube-player
+          width="800"
+          height="450"
+          [videoId]="event?.videoId"
+        ></youtube-player>
+      </div>
+
+      <div class="event__info">
+        <div class="info__left">
+          <h4>{{ event?.title }}</h4>
+          <p>Started streaming {{ timeAgo(event?.timestamp) }}</p>
+        </div>
+        <!-- <div class="info__right">
+          <span>
+            <mat-icon class="info__icon">thumb_up</mat-icon>
+            210
+          </span>
+          <span>
+            <mat-icon class="info__icon">thumb_down</mat-icon>
+            120
+          </span>
+          <span>
+            <mat-icon class="info__icon">share</mat-icon>
+            share
+          </span>
+          <span>
+            <mat-icon class="info__icon">playlist_play</mat-icon>
+            Save
+          </span>
+          <span>
+            <mat-icon class="info__icon">flag</mat-icon>
+          </span>
+        </div> -->
+      </div>
+
+      <hr class="__hr" />
+
+      <div class="event__description">
+        <div>
+          <img [src]="event?.imgURL" class="mat-card-avatar" />
+        </div>
+        <div class="event__data">
+          <h4>{{ event?.channel }}</h4>
+          <!-- <p>{{ event?.views }}K subscribers</p> -->
+
+          <p class="event__details">
+            {{ event?.description }}
+          </p>
+
+          <p class="event__links">
+            <button [routerLink]="['/edit', event?.key]">Edit</button>
+            <button (click)="onDelete()">Delete</button>
+          </p>
+        </div>
+        <div>
+          <!-- <button class="subscribe__btn">Subscribe</button> -->
+        </div>
+      </div>
+    </div>
+    <div class="event__right">
+      <div class="event__chat">
+        <div class="chatHeader">
+          <div class="chatHeader__left">
+            <span>Top Chat </span>
+            <span>▼</span>
+          </div>
+          <div class="chatHeader__right">
+            <span>⋮</span>
+          </div>
+        </div>
+        <div id="messages-container" class="chatBody">
+          <div class="messages">
+            <div
+              class="message"
+              *ngFor="let message of messages; let i = index"
+            >
+              <img
+                [src]="message.sender?.avatar || message.sender.metadata?.avatar"
+                class="mat-card-avatar"
+              />
+              <span>
+                <span class="name">{{ message.sender.name }}</span>
+                {{ message.text }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <form
+          #chatForm="ngForm"
+          (ngSubmit)="submit(chatForm)"
+          class="chatFooter"
+        >
+          <div class="chatFooter__wrapper">
+            <div class="avatar">
+              <img [src]="user?.photoURL" class="mat-card-avatar" />
+            </div>
+            <div class="sendForm">
+              <p>{{ user?.displayName }}</p>
+              <input
+                ngModel
+                name="message"
+                #message="ngModel"
+                id="message"
+                placeholder="Say something..."
+                maxlength="200"
+                max="200"
+                required
+                (keydown)="wordCounter(message.value)"
+              />
+            </div>
+          </div>
+          <div class="chatFooter__btn">
+            <span class="counter">{{ words }}/200</span>
+            <button type="submit" [disabled]="!chatForm.valid">
+              <mat-icon class="icon">send</mat-icon>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="event__videos">
+        <div class="badge-pills">
+          <span class="pill">All</span>
+          <span class="pill">Related</span>
+          <span class="pill">Live</span>
+          <span class="pill">New</span>
+        </div>
+      </div>
+
+      <div class="event__related">
+        <app-related
+          *ngFor="let event of events"
+          [title]="event.title"
+          [timestamp]="timeAgo(event.timestamp)"
+          [channel]="event.channel"
+          [views]="event.views + 'k views'"
+          [image]="event.imgURL"
+          [live]="event.live"
+          (click)="viewEvent(event)"
+        ></app-related>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "clone-6fd6f": {
+      "hosting": {
+        "youtube-clone": [
+          "clone-6fd6f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "clone-6fd6f"
+  }
+}
