@@ -3,12 +3,12 @@
     "clone-6fd6f": {
       "hosting": {
         "youtube-clone": [
-          "clone-6fd6f"
+          "socialmedia-46133"
         ]
       }
     }
   },
   "projects": {
-    "default": "clone-6fd6f"
+    "default": "socialmedia-46133"
   }
 }
