@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SidebarComponent } from './sidebar.component';
 
 @Component({
+  
   selector: 'app-header',
   template: `
     <div class="header">
       <div class="header__left">
         <mat-icon class="header__icon">menu</mat-icon>
         <img
-          [routerLink]="['/']"
+        (click)="open()"
+          [routerLink]="['']"
           class="header__logo"
           src="/assets/daydreamsoft_logo.png"
           alt="youtube logo"
@@ -54,7 +57,7 @@ import { Router } from '@angular/router';
       }
 
       .header__logo {
-        height: 66px;
+        height: 59px;
         margin-left: 20px;
         cursor: pointer;
       }
@@ -113,11 +116,28 @@ import { Router } from '@angular/router';
   ],
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('sidebar') sidebar: SidebarComponent;
+
   user: any = null;
 
   constructor(private auth: AngularFireAuth, private router: Router) {
     this.auth.authState.subscribe((authState) => (this.user = authState));
   }
+
+  public open() {
+    console.log("Sidebar Opened");
+ }
+ public close() {
+  console.log("Sidebar Closed");
+}
+toggleClick() {
+  console.log(("madhav"));
+  
+  this.sidebar.toggle();
+}
+closeClick() {
+  this.sidebar.hide();
+}
 
   ngOnInit(): void {}
 

@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-related',
   template: `
-    <div class="videoCard">
+    <div class="videoCard" *ngIf = "images">
       <img class="videoCard__thumbnail" [src]="image" [alt]="channel" />
       <div class="video__text">
         <h4>{{ title }}</h4>
@@ -76,4 +76,17 @@ export class RelatedComponent {
   @Input() views: string = '';
   @Input() timestamp: string = '';
   @Input() live: string = 'false';
+
+  images:boolean = false;
+
+  // test(){
+
+  //   if(this.images == undefined){
+  //       this.images = false
+  //   }
+  //   else{
+  //       this.images = true
+  //   }
+  // }
+
 }

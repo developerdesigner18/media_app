@@ -29,7 +29,7 @@ import { Router } from '@angular/router';
         margin-bottom: 10px;
       }
 
-      .logout {
+      .logout{
         font-family: "Roboto", sans-serif;
         text-transform: uppercase;
         outline: 0;
@@ -41,15 +41,21 @@ import { Router } from '@angular/router';
         font-size: 14px;
         transition: all 0.3 ease;
         cursor: pointer;
-      }
+        position: relative;
+        top: 380px;
+    }
 
-      .logout:hover {
-        background: rgba(255, 0, 0, 0.829);
-      }
+      
     `,
   ],
 })
 export class SidebarComponent {
+  hide() {
+    throw new Error('Method not implemented.');
+  }
+  toggle() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private auth: AngularFireAuth, private route: Router) {}
 
   public logOut(): void {
