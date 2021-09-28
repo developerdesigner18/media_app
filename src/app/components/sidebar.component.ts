@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { EventsComponent } from '../events/events.component';
 
 @Component({
   selector: 'app-sidebar',
   template: `
-    <app-rows title="Home" icon="home"></app-rows>
-    <app-rows title="Trending" icon="whatshot"></app-rows>
+    <app-rows title="Create event" icon="open_in_new"  [routerLink]="['/create']"></app-rows>
+    <app-rows title="Register" icon="account_box"  [routerLink]="['/register']"></app-rows>
+    <app-rows title="Login" icon="login"  [routerLink]="['/login']"></app-rows>
+    <app-rows title="Profile" icon="verified_user"  [routerLink]="['/profile']"></app-rows>
+
+
+
+
+    <!---<app-rows title="Trending" icon="whatshot"></app-rows>
     <app-rows title="Subscription" icon="subscriptions"></app-rows>
     <hr class="sidebar__hr" />
     <app-rows title="Library" icon="video_library"></app-rows>
@@ -16,7 +24,7 @@ import { Router } from '@angular/router';
     <app-rows title="Watch Later" icon="watch_ater"></app-rows>
     <app-rows title="Liked Videos" icon="thumb_up_alt_outlined"></app-rows>
     <app-rows title="Show More" icon="expand_more_outlined"></app-rows>
-    <hr class="sidebar__hr" />
+    <hr class="sidebar__hr" />--->
     <button class="logout" (click)="logOut()">Logout</button>
   `,
   styles: [
@@ -50,6 +58,9 @@ import { Router } from '@angular/router';
   ],
 })
 export class SidebarComponent {
+  // @ViewChild('about = true', { static: true }) captchaElem: EventsComponent;
+  about: boolean = false;
+
   hide() {
     throw new Error('Method not implemented.');
   }

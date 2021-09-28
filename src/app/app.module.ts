@@ -24,6 +24,8 @@ import { SidebarComponent } from './components/sidebar.component';
 import { RowsComponent } from './components/rows.component';
 import { VideoComponent } from './components/video.component';
 import { RelatedComponent } from './components/related.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { RelatedComponent } from './components/related.component';
     AngularMaterialModule,
     HttpClientModule,
     YouTubePlayerModule,
+    ToastrModule.forRoot(), 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
   ],

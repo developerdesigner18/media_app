@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { CometChat } from '@cometchat-pro/chat';
@@ -10,9 +10,18 @@ import { CometChat } from '@cometchat-pro/chat';
 })
 export class EventsComponent implements OnInit {
   about: boolean = false;
+  
+
+  @Input() item = 'about'
+
+  
   events: Array<any> = [];
 
-  constructor(private firestore: AngularFirestore, private route: Router) {}
+  constructor(private firestore: AngularFirestore, private route: Router) {
+    console.log("value",this.about);
+    
+
+  }
 
   ngOnInit(): void {
     this.listEvents();

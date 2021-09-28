@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 
@@ -13,7 +13,8 @@ export class AppComponent {
 
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    public toastr: ToastrService,
   ) {
     this.matIconRegistry.addSvgIcon(
       "access_point",

@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import '~ngx-toastr/toastr';
+
 
 .login-page {
   width: 360px;
@@ -91,3 +93,9 @@
 .container .info span .fa {
   color: #ef3b3a;
 }
+
+.invalid-feedback{
+  font-family: 'Space_Grotesk';
+  color: red;
+}
+

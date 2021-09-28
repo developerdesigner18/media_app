@@ -10,7 +10,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  Regmodel: any = {};
   loading: boolean = false;
+
   constructor(private auth: AngularFireAuth, private route: Router) {}
 
   public submit(form: any): void {
